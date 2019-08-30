@@ -1,16 +1,19 @@
 {
   "name": "vue-editor-interline",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "lib": "vue-cli-service build --target lib --name vue-editor-interline --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "wangeditor": "^3.1.1",
+    "xss": "^1.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
@@ -27,5 +30,26 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "description": "Vue富文本框插件",
+  "main": "lib/vue-editor-interline.common.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "keywords": [
+    "Vue",
+    "富文本框"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JdesEva/vue-editor-interline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JdesEva/vue-editor-interline/issues"
+  },
+  "homepage": "https://github.com/JdesEva/vue-editor-interline#readme",
+  "author": "Jdes",
+  "license": "MIT"
 }
