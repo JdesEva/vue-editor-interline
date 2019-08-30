@@ -99,15 +99,33 @@ export default {
     // 这里存放数据
     return {
       editor: null,
-      content: ''
+      content: '',
+      reg: /<\/?.+?\/?>/g // 截取标签内容
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
+    /**
+     * 原理
+     * 1. 首先监听props中v-model绑定的值的变化
+     *    如果值改变了，存在以下几种情况
+     *    · 富文本内容为空，证明这是第一次打开，将v-model的值绑定到富文本框即可
+     *    · 富文本存在内容，证明这是在编辑，跳过即可
+     * 2. 重点在于每次监听props，如果v-model的值变为空（''），证明这是关闭了富文本，将富文本框内容清空即可
+     *    ** 这一步的操作主要在业务组件内完成，因此推荐使用富文本框提交表单之后，必须进行重置表单操作。
+     */
     value (val) {
-      this.editor.txt.html(XSS(this.value))
+      var content = this.editor.txt.html().replace(this.reg, '')
+      if (!content && this.editor.txt.html().indexOf('img') === -1) {
+        this.editor.txt.html(this.value)
+        this.content = this.value
+      }
+      if (!this.value) {
+        this.editor.txt.clear()
+        this.content = this.value
+      }
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
@@ -135,12 +153,12 @@ export default {
       // 编辑器的事件，每次改变会获取其html内容
       this.editor.customConfig.onchange = html => {
         this.content = XSS(html)
-        this.$emit('change', this.content)
+        this.$emit('change', html)
         // eslint-disable-next-line semi
       };
       this.editor.customConfig.debug = this.debug // debug 模式
       this.editor.customConfig.menus = this.toolBar // 工具栏
-      this.editor.customConfig.pasteFilterStyle = false // 关闭样式
+      this.editor.customConfig.pasteFilterStyle = false // 关闭样式过滤
       this.editor.customConfig.withCredentials = true // 图片上传携带凭证
       /**
        * 图片上传操作
@@ -151,7 +169,7 @@ export default {
         /**
          * 如果自定义了上传操作，请务必覆写customInsert事件
          */
-        if (Object.keys(this.hook).length) {
+        if (Object.keys(this.hook).length && this.action) {
           this.editor.customConfig.uploadImgHooks = this.hook // 自定义上传操作
         } else {
           this.editor.customConfig.uploadImgHooks = {
@@ -190,7 +208,7 @@ export default {
      * 初始化内容
      */
     _initValue () {
-      this.editor.content = XSS(this.value || ``)
+      this.editor.content = XSS(this.value)
       this.editor.txt.html(this.editor.content)
     }
   }
