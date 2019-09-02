@@ -22,13 +22,13 @@
 
 <script>
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      data: '<h1>1234213123</h1>'
-    }
+      data: "<h1>1234213123</h1>"
+    };
   }
-}
+};
 </script>
 
 <style>
