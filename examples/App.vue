@@ -5,16 +5,11 @@
       <vueEditor
         debug
         v-model="data"
-        baseUrl="http://121.43.198.71:8080"
-        action="http://121.43.198.71:8080/image/upload.html"
-        :option="{fontNames : [
-            '宋体',
-            '隶书',
-            '微软雅黑',
-            'Arial',
-            'Tahoma',
-            'Verdana'
-        ]}"
+        baseUrl="http://192.168.10.11:8082"
+        action="http://192.168.10.11:8082/image/batch/upload.html"
+        :option="{
+          fontNames: ['宋体', '隶书', '微软雅黑', 'Arial', 'Tahoma', 'Verdana']
+        }"
       />
     </div>
   </div>
@@ -22,14 +17,13 @@
 
 <script>
 export default {
-  name: "app",
-  data() {
+  name: 'app',
+  data () {
     return {
-      data: "<h1>1234213123</h1>"
-    };
+      data: '<h1>1234213123</h1>'
+    }
   }
-};
+}
 </script>
 
-<style>
-</style>
+<style></style>

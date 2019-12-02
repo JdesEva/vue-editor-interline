@@ -15,7 +15,7 @@
 | `v-model`  | -                  | -         | 绑定值，双向绑定                                                                             |
 | `toolBar`  | 同`wangEditor`菜单 | `Array`   | 富文本框工具栏，默认值和`wangEditor`一样                                                     |
 | `action`   | `''`               | `String`  | 图片上传地址                                                                                 |
-| `fileName` | `file`             | `String`  | 服务器图片上传接口文件流键名                                                                 |
+| `fileName` | `files`             | `String`  | 服务器图片上传接口文件流键名                                                                 |
 | `baseUrl`  | `''`               | `String`  | 图片上传回显的前缀地址，默认空                                                               |
 | `size`     | 2                  | `Number`  | 图片上传大小限制，单位:MB                                                                    |
 | `limit`    | -                  | `Number`  | 图片上传数量限制，默认无                                                                     |

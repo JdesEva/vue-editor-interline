@@ -6,10 +6,8 @@
 </template>
 
 <script>
-// eslint-disable-next-line semi
-import Editor from 'wangeditor';
-// eslint-disable-next-line semi
-import XSS from 'xss';
+import Editor from 'wangeditor'
+import XSS from 'xss'
 
 export default {
   // import引入的组件需要注入到对象中才能使用
@@ -54,7 +52,7 @@ export default {
     },
     fileName: {
       type: String,
-      default: () => 'file'
+      default: () => 'files'
     },
     baseUrl: {
       type: String,
@@ -155,7 +153,7 @@ export default {
         this.content = XSS(html)
         this.$emit('change', html)
         // eslint-disable-next-line semi
-      };
+      }
       this.editor.customConfig.debug = this.debug // debug 模式
       this.editor.customConfig.menus = this.toolBar // 工具栏
       this.editor.customConfig.pasteFilterStyle = false // 关闭样式过滤
@@ -201,8 +199,12 @@ export default {
      * upLoad
      */
     _upLoadSuccess (insertImg, result, editor) {
-      var url = `${this.baseUrl}${result.url}`
-      insertImg(url)
+      if (result.url.length) {
+        result.url.forEach(row => {
+          var url = `${this.baseUrl}${row}`
+          insertImg(url)
+        })
+      }
     },
     /**
      * 初始化内容
@@ -214,6 +216,6 @@ export default {
   }
 }
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 //@import url(); 引入公共css类
 </style>
