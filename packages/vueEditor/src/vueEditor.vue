@@ -7,6 +7,7 @@
 
 <script>
 import Editor from 'jsy-editor'
+import 'jsy-editor/lib/index.min.css'
 
 export default {
   // import引入的组件需要注入到对象中才能使用
