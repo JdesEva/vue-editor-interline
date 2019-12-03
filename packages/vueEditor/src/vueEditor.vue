@@ -7,7 +7,6 @@
 
 <script>
 import Editor from 'wangeditor'
-import XSS from 'xss'
 
 export default {
   // import引入的组件需要注入到对象中才能使用
@@ -150,8 +149,8 @@ export default {
       this.editor = new Editor(this.$refs.editor)
       // 编辑器的事件，每次改变会获取其html内容
       this.editor.customConfig.onchange = html => {
-        this.content = XSS(html)
-        this.$emit('change', html)
+        this.content = html
+        this.$emit('change', this.content)
         // eslint-disable-next-line semi
       }
       this.editor.customConfig.debug = this.debug // debug 模式
@@ -210,8 +209,7 @@ export default {
      * 初始化内容
      */
     _initValue () {
-      this.editor.content = XSS(this.value)
-      this.editor.txt.html(this.editor.content)
+      this.editor.txt.html(this.value)
     }
   }
 }

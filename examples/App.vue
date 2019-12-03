@@ -20,7 +20,8 @@ export default {
   name: 'app',
   data () {
     return {
-      data: '<h1>1234213123</h1>'
+      data:
+        '<h1><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1575347790997&amp;di=d816bff523e10ad7bae7c68157fca9c1&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201812%2F21%2F20181221074141_PSkAY.jpeg" style="max-width:30%;"></h1>'
     }
   }
 }
