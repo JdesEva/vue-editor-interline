@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Editor from 'wangeditor'
+import Editor from 'jsy-editor'
 
 export default {
   // import引入的组件需要注入到对象中才能使用
@@ -67,9 +67,7 @@ export default {
     },
     data: {
       type: Object,
-      default: function () {
-        return {}
-      }
+      default: () => {}
     },
     merge: {
       type: Boolean,
@@ -81,15 +79,11 @@ export default {
     },
     hook: {
       type: Object,
-      default: function () {
-        return {}
-      }
+      default: () => {}
     },
     option: {
       type: Object,
-      default: function () {
-        return {}
-      }
+      default: () => {}
     }
   },
   data () {
@@ -166,7 +160,7 @@ export default {
         /**
          * 如果自定义了上传操作，请务必覆写customInsert事件
          */
-        if (Object.keys(this.hook).length && this.action) {
+        if (this.hook && Object.keys(this.hook).length && this.action) {
           this.editor.customConfig.uploadImgHooks = this.hook // 自定义上传操作
         } else {
           this.editor.customConfig.uploadImgHooks = {
@@ -179,13 +173,13 @@ export default {
       this.editor.customConfig.uploadImgMaxSize = this.size * 1024 * 1024 // 图片大小
       this.editor.customConfig.uploadImgMaxLength = this.limit // 图片数量限制
       this.editor.customConfig.uploadImgParams = this.data // 附加参数
-      if (Object.keys(this.data).length) {
+      if (this.data && Object.keys(this.data).length) {
         this.editor.customConfig.uploadImgParamsWithUrl = this.merge // 参数合并url
       }
       /**
        * 合并富文本参数
        */
-      if (Object.keys(this.option).length) {
+      if (this.option && Object.keys(this.option).length) {
         this.editor.customConfig = {
           ...this.editor.customConfig,
           ...this.option
