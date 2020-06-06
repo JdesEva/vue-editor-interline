@@ -10,6 +10,7 @@ module.exports = {
     }
   },
   // 基本路径(开发路径和打包路径)
+  assetsDir: 'static',
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   // 输出文件目录
   outputDir: 'dist',

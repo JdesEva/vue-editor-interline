@@ -6030,10 +6030,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jsy-editor@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/jsy-editor/-/jsy-editor-1.1.1.tgz#47067b269a3dda98ea8da595fe0e2675f4bbf631"
-  integrity sha512-OY1nYcoolda8kSWvxKi4zE1O1ynS67nSMimeyfas/38iD0HR6pKpLxxrYq5C4202wYG/L0zCvavP0gp3gJQRIQ==
+jsy-editor@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/jsy-editor/-/jsy-editor-1.1.2.tgz#b4c0d7266c122031c6b51d42dd55b7d65eb9404f"
+  integrity sha512-dnr8uPGqlZAPK+acQO7KmmnH1QYtT/3xLdlQ5SLC4ayAjN+nu2tJjOG7IBhoAKYLqSg6bljt1X4cn7gRUjq6xA==
 
 killable@^1.0.1:
   version "1.0.1"

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <div v-html="data"></div>
+    <div class="w-e-text-container">
+      <div class="w-e-text no-scroll" v-html="data"></div>
+    </div>
     <div>
       <vueEditor
         debug
@@ -12,6 +14,7 @@
         }"
       />
     </div>
+    <div>{{ data }}</div>
   </div>
 </template>
 
@@ -21,10 +24,11 @@ export default {
   data () {
     return {
       data:
-        '<h1><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1575347790997&amp;di=d816bff523e10ad7bae7c68157fca9c1&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201812%2F21%2F20181221074141_PSkAY.jpeg" style="max-width:30%;"></h1>'
+        '<h1><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591092508544&di=aca97936da2e340002d3347f9901c94b&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F30e612de987990df871552237a35d904656d8e2e.jpg" style="max-width:30%;"></h1>'
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+</style>
