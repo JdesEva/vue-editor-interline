@@ -47,6 +47,7 @@ npm i vue-editor-interline --save
 
 ```js
 import vueEditor from 'vue-editor-interline'
+import 'vue-editor-interline/lib/vue-editor-interline.css'
 
 Vue.use(vueEditor)
 ```
