@@ -12,6 +12,8 @@
 
 ### API
 
+#### props
+
 | props      | default            | type      | 说明                                                                                         |
 | ---------- | ------------------ | --------- | -------------------------------------------------------------------------------------------- |
 | `v-model`  | -                  | -         | 绑定值，双向绑定                                                                             |
@@ -30,6 +32,14 @@
 > 注意，以上图片上传相关配置（`fileName`,`baseUrl`,`merge`,`data`），必须在开启服务器上传配置`action`后才会生效。
 
 > 富文本默认上传方式（即不配置`action`）为`base64`。
+
+#### 方法
+
+> 方法调用需要使用 ref
+
+| 方法名称 | 参数 | 说明             |
+| -------- | ---- | ---------------- |
+| clear    | -    | 清空富文本框内容 |
 
 ### 安装
 
@@ -60,6 +70,7 @@ Vue.use(vueEditor)
     <div>
       <vueEditor
         debug
+        ref="vRef"
         v-model="data"
         :option="{fontNames : [
             '宋体',
@@ -73,6 +84,17 @@ Vue.use(vueEditor)
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    methods: {
+      // 调用此方法可以清空富文本内容
+      clear() {
+        this.$refs.vRef.clear()
+      }
+    }
+  }
+</script>
 ```
 
 ### 示例
