@@ -85,9 +85,13 @@ export default {
     option: {
       type: Object,
       default: () => {}
+    },
+    responseName: {
+      type: String,
+      default: () => 'list'
     }
   },
-  data() {
+  data () {
     // 这里存放数据
     return {
       editor: null,
@@ -108,7 +112,7 @@ export default {
      * 2. 重点在于每次监听props，如果v-model的值变为空（''），证明这是关闭了富文本，将富文本框内容清空即可
      *    ** 这一步的操作主要在业务组件内完成，因此推荐使用富文本框提交表单之后，必须进行重置表单操作。
      */
-    value(val) {
+    value (val) {
       var content = this.editor.txt.html().replace(this.reg, '')
       if (!content && this.editor.txt.html().indexOf('img') === -1) {
         this.editor.txt.html(this.value)
@@ -121,26 +125,26 @@ export default {
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created () {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this._initEditor()
     })
   },
-  beforeCreate() {}, // 生命周期 - 创建之前
-  beforeMount() {}, // 生命周期 - 挂载之前
-  beforeUpdate() {}, // 生命周期 - 更新之前
-  updated() {}, // 生命周期 - 更新之后
-  beforeDestroy() {}, // 生命周期 - 销毁之前
-  destroyed() {}, // 生命周期 - 销毁完成
-  activated() {},
+  beforeCreate () {}, // 生命周期 - 创建之前
+  beforeMount () {}, // 生命周期 - 挂载之前
+  beforeUpdate () {}, // 生命周期 - 更新之前
+  updated () {}, // 生命周期 - 更新之后
+  beforeDestroy () {}, // 生命周期 - 销毁之前
+  destroyed () {}, // 生命周期 - 销毁完成
+  activated () {},
   // 方法集合
   methods: {
     /**
      * 初始化富文本框
      */
-    _initEditor() {
+    _initEditor () {
       this.editor = new Editor(this.$refs.editor)
       // 编辑器的事件，每次改变会获取其html内容
       this.editor.customConfig.onchange = html => {
@@ -192,9 +196,9 @@ export default {
     /**
      * upLoad
      */
-    _upLoadSuccess(insertImg, result, editor) {
-      if (result.url.length) {
-        result.url.forEach(row => {
+    _upLoadSuccess (insertImg, result, editor) {
+      if (result[this.responseName].length) {
+        result[this.responseName].forEach(row => {
           var url = `${this.baseUrl}${row}`
           insertImg(url)
         })
@@ -203,13 +207,13 @@ export default {
     /**
      * 初始化内容
      */
-    _initValue() {
+    _initValue () {
       this.editor.txt.html(this.value)
     },
     /**
      * 清空富文本内容
      */
-    clear() {
+    clear () {
       this.editor.txt.clear()
       this.editor.txt.html('<p><br></p>')
       this.content = this.editor.txt.html()
